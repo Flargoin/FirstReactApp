@@ -10,9 +10,9 @@ import EmployeesListItem from '../employees-list-item/employees-list-item';
 function App() {
 
     const data = [
-       { name: 'Will R.', salary: '800', increase: false},
-       { name: 'Arthur J.', salary: '3000', increase: true},
-       { name: 'Ronald K.', salary: '5000', increase: false},
+       { name: 'Никита Н.', salary: '800', increase: false, id : 1},
+       { name: 'Артем П.', salary: '3000', increase: true, id : 2},
+       { name: 'Артур Д.', salary: '5000', increase: false, id : 3},
     ];
 
     return(

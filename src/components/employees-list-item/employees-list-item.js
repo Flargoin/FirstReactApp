@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './employees-list-item.css'
 
-class EmployeesListItem extends React.Component {                       // Класс с наследованием от компонента реакта 
+class EmployeesListItem extends Component {                       // Класс с наследованием от компонента реакта 
     constructor(props) {
         super(props);
         this.state = {

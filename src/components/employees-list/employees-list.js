@@ -2,12 +2,16 @@ import EmployeesListItem from '../employees-list-item/employees-list-item'
 
 import './employees-list.css';
 
-const EmployeesList = ({data}) => {                         // передаём массив данных
+const EmployeesList = ({data, onDelete, onToggleProp}) => {
 
-    const elements = data.map(item => {                     // map ,берём каждый элемент массива  отделяем от него id(key)
-        const {id, ...itemProps} = item;                    // выносим id, с помощью оператора rest itemProps(атрибуты) поместятся в массив
+    const elements = data.map(item => {
+        const {id, ...itemProps} = item;                    
         return (
-            <EmployeesListItem key={id} {...itemProps}/>
+            <EmployeesListItem 
+            key={id} 
+            {...itemProps}
+            onDelete={() => onDelete(id)}
+            onToggleProp = {(e) => onToggleProp(id, e.currentTarget.getAttribute('data-toggle'))}/>
         );
     });
 

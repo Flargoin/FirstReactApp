@@ -15,9 +15,9 @@ class App extends Component {
         super(props)
         this.state = {
             data : [
-                { name: 'Никита Н.', salary: '800', increase: false, id : 1},
-                { name: 'Артем П.', salary: '3000', increase: true, id : 2},
-                { name: 'Сергей Р.', salary: '5000', increase: false, id : 3}
+                { name: 'Никита Н.', salary: '800', increase: false, rise: true, id : 1},
+                { name: 'Артем П.', salary: '3000', increase: true, rise: false, id : 2},
+                { name: 'Сергей Р.', salary: '5000', increase: false, rise: false, id : 3}
              ]
         }
         this.maxId = 4;
@@ -58,10 +58,17 @@ class App extends Component {
         }))
     }
 
-    render() {     
+    render() {
+        
+        const employees = this.state.data.length;                                   // Кол-во сотрудников
+        const increased = this.state.data.filter(item => item.increase).length;    // Новый масив с сотружниками которые получат премию
+
          return(
              <div className="app">
-                 <AppInfo />
+                 <AppInfo 
+                 employees = {employees}
+                 increased = {increased}
+                 />
      
                  <div className="search-panel">
                      <SearchPanel />

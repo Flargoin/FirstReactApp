@@ -1,5 +1,7 @@
+/* Импортируем стили */
 import './app-info.css'
 
+/* Функциональный компонент в который передали переменные для счётчика из App.js */
 const AppInfo = ({employees, increased}) => {
     return (
         <div className="app-info">
@@ -10,4 +12,5 @@ const AppInfo = ({employees, increased}) => {
     );
 }
 
+/* Экспортируем в App.js */
 export default AppInfo;

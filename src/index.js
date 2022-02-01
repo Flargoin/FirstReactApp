@@ -1,7 +1,12 @@
+/* Импортируем компоненты реакта */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
+/* Импортируем приложение */
 import App from './components/app/app';
+
+/* Импортируем базовые стили */
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,3 +1,4 @@
+/* Имортируем стили */
 import './app-filter.css';
 
 const AppFilter = () => {

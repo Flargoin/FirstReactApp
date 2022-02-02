@@ -24,7 +24,8 @@ class App extends Component {
                 { name: 'Сергей Р.', salary: '5000', increase: false, rise: false, id : 3}
              ],
              /* Переменная которая будет в поиске находить совпадения */
-             term : ''
+             term : '',
+             filter: 'all'
         }
         this.maxId = 4;
     }
@@ -88,9 +89,24 @@ class App extends Component {
         this.setState({term});
     }
 
+    filterPost = (items, filter) => {
+        switch (filter) {
+            case 'rise':
+                return items.filter(item => item.rise);
+            case 'moreThen1000':
+                return items.filter(item => item.salary > 1000);
+            default:
+                return items;
+        }
+    }
+
+    onFilterSelect = (filter) => {
+        this.setState({filter});
+    }
+
     render() {
         /* Переменная для поиска */
-        const{data, term} = this.state;
+        const{data, term, filter} = this.state;
 
         /* Кол-во сотрудников. Переменная для счётчика*/
         const employees = this.state.data.length; 
@@ -99,7 +115,7 @@ class App extends Component {
         const increased = this.state.data.filter(item => item.increase).length;    
 
         /* Переменная которая показывает результирующие данные из метода searchEmp и передаётся в компонент EmployeesList*/
-        const visibleData = this.searchEmp(data, term);
+        const visibleData = this.filterPost(this.searchEmp(data, term), filter);
 
          return(
              <div className="app">
@@ -110,7 +126,7 @@ class App extends Component {
      
                  <div className="search-panel">
                      <SearchPanel onUpdateSearch = {this.onUpdateSearch}/>
-                     <AppFilter />
+                     <AppFilter filter = {filter} onFilterSelect= {this.onFilterSelect}/>
                  </div>
      
                  <EmployeesList 
